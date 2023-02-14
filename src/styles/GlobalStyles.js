@@ -20,7 +20,6 @@ main{
     padding-bottom: 10px;
     padding-top: 10px;
     justify-content: flex-start;
-    height: 100vh;
 }
 input{
     color: var(--Grey-0);
