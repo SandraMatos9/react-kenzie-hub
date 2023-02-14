@@ -111,7 +111,6 @@ export const StyledMain = styled.main`
     & .divInfoUsuario {
       flex-direction: row;
       align-items: center;
-      margin: auto;
       text-align: center;
     }
     & .divTecnologias {
