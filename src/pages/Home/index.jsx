@@ -7,7 +7,6 @@ import { useForm } from 'react-hook-form'
 
 
 const Dashboard = ({user}) => {
-console.log(user)
     function AdicionarTech(){
 
     }

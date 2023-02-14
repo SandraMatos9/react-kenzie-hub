@@ -86,8 +86,9 @@ export const Form = styled.form`
     width: 263.79px;
     height: 38.38px;
     background: #343b41;
-    border: 0x solid #343b41;
     border-radius: 3.19812px;
+    border: 1px #343b41;
+
   }
   & .pSubtitulo {
     width: 132px;

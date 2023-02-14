@@ -33,11 +33,9 @@ const Login = ({ user, setUser }) => {
     });
     const navigate = useNavigate()
     const usuario = async (data) => {
-        console.log(data)
 
         try {
             const response = await api.post('/sessions/ ', data)
-            console.log(response)
             const id = response.data.id
 
             toast.success("Login feito com sucesso!")
@@ -50,7 +48,6 @@ const Login = ({ user, setUser }) => {
 
 
         } catch (error) {
-            console.log('teste')
             
             toast.error("Erro ao logar")
         }

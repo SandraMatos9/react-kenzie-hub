@@ -39,11 +39,9 @@ const Registro = ({ user, setUser, loading, setLoading }) => {
     const navigate = useNavigate()
     const cadastroUsuario = async (data) => {
         delete data.confirmPassword
-        console.log(data)
 
         try {
             const response = await api.post('/users', data)
-            console.log(response)
             const id = response.data.id
 
             navigate('/')
@@ -54,7 +52,6 @@ const Registro = ({ user, setUser, loading, setLoading }) => {
 
         } catch (error) {
             toast.error("Erro ao cadastrar")
-            // reset()
         }
     }
 
@@ -89,7 +86,7 @@ const Registro = ({ user, setUser, loading, setLoading }) => {
                 <p className='pMensagem'>{errors.confirmPassword?.message}</p>
 
 
-                <label htmlFor='bio'> Bio</label>
+                <label htmlFor='bio'>Bio</label>
                 <input type="tex" placeholder="Fale sobre você" {...register("bio")} />
                 <p className='pMensagem'>{errors.bio?.message}</p>
 

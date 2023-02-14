@@ -16,7 +16,6 @@ export const Form = styled.form`
   padding: 33px 17px;
   gap: 17px;
   width: 296px;
-  height: 402px;
   background: #212529;
   box-shadow: 0px 3px 32px -8px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
@@ -77,7 +76,7 @@ export const Form = styled.form`
     width: 264.66px;
     height: 38.5px;
     background: #343b41;
-    border: 0.9772px solid #f8f9fa;
+    border: 1px #343b41;
     border-radius: 3px;
   }
 
