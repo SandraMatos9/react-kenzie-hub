@@ -7,12 +7,15 @@ export const StyledDivLogoBotao = styled.div`
 `;
 
 export const StyledMain2 = styled.main`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  /* height: 100vh; */
+    background: rgb(0, 0, 0);
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
 `;
 
 export const Form = styled.form`
@@ -68,6 +71,10 @@ export const Form = styled.form`
 
   & .labelConfSenha{
     margin-right: 120px;
+  }
+
+  & .labelBio{
+    margin-right: 230px;
   }
 
   & .pMensagem{

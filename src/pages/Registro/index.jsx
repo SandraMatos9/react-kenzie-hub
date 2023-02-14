@@ -86,7 +86,7 @@ const Registro = ({ user, setUser, loading, setLoading }) => {
                 <p className='pMensagem'>{errors.confirmPassword?.message}</p>
 
 
-                <label htmlFor='bio'>Bio</label>
+                <label htmlFor='bio' className='labelBio'>Bio</label>
                 <input type="tex" placeholder="Fale sobre você" {...register("bio")} />
                 <p className='pMensagem'>{errors.bio?.message}</p>
 
