@@ -15,7 +15,7 @@ export const StyledMain2 = styled.main`
     -webkit-box-pack: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
 `;
 
 export const Form = styled.form`
