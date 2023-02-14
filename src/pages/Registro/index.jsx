@@ -5,15 +5,15 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { StyledBotaoCadastrar } from '../../styles/Button/botaoCadastrar';
 import { StyledBotaoVoltar } from '../../styles/Button/botaoVoltar';
-import { StyledDivLogoBotao, Form, StyledMain2 } from '../../styles/registro';
-import { useNavigate } from 'react-router-dom'
+import { StyledDivLogoBotao, Form, StyledMain2 } from './registro';
+import { useNavigate,Link } from 'react-router-dom'
 import { api } from '../../services/api';
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
 const schema = yup.object({
     name: yup.string().required('Nome é obrigatório!'),
-    email: yup.string().email().required('Email é obrigatório!'),
+    email: yup.string().required('Email é obrigatório!'),
     password: yup.string().matches(/(\d)/, 'Deve conter ao menos um número.')
         .matches(/[a-z]/, 'Deve conter ao menos uma letra minúscula')
         .matches(/[A-Z]/, 'Deve conter ao menos uma letra maiúscula')
@@ -38,23 +38,18 @@ const Registro = ({ user, setUser, loading, setLoading }) => {
 
     const navigate = useNavigate()
     const cadastroUsuario = async (data) => {
+        delete data.confirmPassword
         console.log(data)
 
         try {
-            const response = await api.post('/users', data, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
+            const response = await api.post('/users', data)
             console.log(response)
             const id = response.data.id
 
-            navigate('/login')
+            navigate('/')
             toast.success("Cadastro feito com sucesso!")
 
-            window.localStorage.clear("token")
-            window.localStorage.setItem("authToken", res.data.token);
-            setUser(true)
+          
 
 
         } catch (error) {
@@ -68,7 +63,7 @@ const Registro = ({ user, setUser, loading, setLoading }) => {
         <StyledMain2>
             <StyledDivLogoBotao>
                 <img className="logoBurguer" src={logoHub} />
-                <StyledBotaoVoltar>Voltar</StyledBotaoVoltar>
+                <StyledBotaoVoltar><Link to="/">Voltar</Link></StyledBotaoVoltar>
             </StyledDivLogoBotao>
 
             <Form onSubmit={handleSubmit(cadastroUsuario)}>
@@ -112,9 +107,7 @@ const Registro = ({ user, setUser, loading, setLoading }) => {
                 </select>
 
 
-                <StyledBotaoEntrar />
-                <p className='pCadastro'>Ainda não possui cadastro?</p>
-                <StyledBotaoCadastrar>Cadastre-se</StyledBotaoCadastrar>
+                <StyledBotaoCadastrar>Cadastrar</StyledBotaoCadastrar>
 
             </Form>
 

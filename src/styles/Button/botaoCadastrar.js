@@ -11,7 +11,7 @@ export const StyledBotaoCadastrar = styled.button`
   height: 38px;
   left: 0px;
   top: 0px;
-  background: #868e96;
+  background: var( --Color-primary-Negative);
   border: 1px solid #868e96;
   border-radius: 4px;
   font-family: "Inter";

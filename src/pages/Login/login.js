@@ -2,11 +2,11 @@ import styled from "styled-components";
 export const StyledMain = styled.main`
   background: #000000;
   width: 100%;
-  height: 720px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100vh;
 `;
 
 
@@ -25,6 +25,13 @@ export const Form = styled.form`
   margin: 0 auto;
   margin-top: 20px;
 
+  & .pMensagem{
+    align-items: center;
+    text-align: center;
+    color:var(--Color-primary)
+    
+  }
+
   & .pLogin {
     color: #f8f9fa;
     display: flex;
@@ -36,6 +43,7 @@ export const Form = styled.form`
     color: #f8f9fa;
     display: flex;
     margin-right: 210px;
+    box-sizing: border-box;
   }
 
   & input {
@@ -61,7 +69,7 @@ export const Form = styled.form`
     color: #868E96;
   }
   @media(min-width: 800px){
-    Form{
+    .Form{
       width: 369px;
       height: 502px;
       background-color: red;

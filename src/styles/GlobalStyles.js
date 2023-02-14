@@ -20,6 +20,9 @@ main{
     padding-bottom: 10px;
     padding-top: 10px;
 }
+input{
+    color: var(--Grey-0);
+}
 
 
 

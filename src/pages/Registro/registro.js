@@ -7,12 +7,12 @@ export const StyledDivLogoBotao = styled.div`
 `;
 
 export const StyledMain2 = styled.main`
-  /* background: #000000; */
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* height: 100vh; */
 `;
 
 export const Form = styled.form`
@@ -60,6 +60,7 @@ export const Form = styled.form`
     color: #f8f9fa;
     display: flex;
     margin-right: 200px;
+    box-sizing: border-box;
   }
   & .labelSelecMod{
     margin-right: 120px;
@@ -70,7 +71,9 @@ export const Form = styled.form`
   }
 
   & .pMensagem{
-    color: var( --Grey-0);
+    color: var(--Color-primary);
+    align-items: center;
+    text-align: center;
   }
 
   & input {
@@ -83,7 +86,7 @@ export const Form = styled.form`
     width: 263.79px;
     height: 38.38px;
     background: #343b41;
-    border: 0.973988px solid #343b41;
+    border: 0x solid #343b41;
     border-radius: 3.19812px;
   }
   & .pSubtitulo {

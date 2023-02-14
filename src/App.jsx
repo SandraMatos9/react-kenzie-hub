@@ -6,14 +6,13 @@ import { toast, ToastContainer } from 'react-toastify';
 
 function App() {
   const [user,setUser]= useState({})
-  const [loading,setLoading]=[]
 
 
   
 
   return (
     <>
-    <AppRoutes user={user} setUser={setUser} loading={loading} setLoading={setLoading}/>
+    <AppRoutes user={user} setUser={setUser} />
     <ToastContainer/>
 
     </>
