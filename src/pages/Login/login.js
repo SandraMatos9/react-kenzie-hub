@@ -9,7 +9,6 @@ export const StyledMain = styled.main`
   height: 100vh;
 `;
 
-
 export const Form = styled.form`
   box-sizing: border-box;
   display: flex;
@@ -25,11 +24,33 @@ export const Form = styled.form`
   margin: 0 auto;
   margin-top: 20px;
 
-  & .pMensagem{
+  & .botaoCadastrarLogin {
+    background-color: #868e96;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 22px;
+    gap: 10px;
+    width: 259px;
+    height: 38px;
+    left: 0px;
+    top: 0px;
+    border: 1px solid #868e96;
+    border-radius: 4px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12.8347px;
+    line-height: 21px;
+    color: #f8f9fa;
+  }
+
+  & .pMensagem {
     align-items: center;
     text-align: center;
-    color:var(--Color-primary)
-    
+    color: var(--Color-primary);
   }
 
   & .pLogin {
@@ -66,10 +87,10 @@ export const Form = styled.form`
     font-weight: 600;
     font-size: 9.62602px;
     line-height: 14px;
-    color: #868E96;
+    color: #868e96;
   }
-  @media(min-width: 800px){
-    .Form{
+  @media (min-width: 800px) {
+    .Form {
       width: 369px;
       height: 502px;
       background-color: red;

@@ -63,7 +63,7 @@ const Registro = ({ user, setUser, loading, setLoading }) => {
         <StyledMain2>
             <StyledDivLogoBotao>
                 <img className="logoBurguer" src={logoHub} />
-                <StyledBotaoVoltar><Link to="/">Voltar</Link></StyledBotaoVoltar>
+                <Link to="/"> <StyledBotaoVoltar>Voltar</StyledBotaoVoltar></Link>
             </StyledDivLogoBotao>
 
             <Form onSubmit={handleSubmit(cadastroUsuario)}>
@@ -101,9 +101,9 @@ const Registro = ({ user, setUser, loading, setLoading }) => {
 
                 <label className='labelSelecMod'>Selecionar módulo</label>
                 <select {...register("course_module")}>
-                    <option value="primeiroModulo">Primeiro Módulo</option>
-                    <option value="segundoModulo">Segundo Módulo</option>
-                    <option value="terceiroModulo">Terceiro Módulo</option>
+                    <option value="Primeiro Módulo">Primeiro Módulo</option>
+                    <option value="Segundo Módulo">Segundo Módulo</option>
+                    <option value="Terceiro Módulo">Terceiro Módulo</option>
                 </select>
 
 

@@ -5,7 +5,6 @@ import { Form, StyledMain } from './login'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { useEffect, useState } from 'react'
-import { StyledBotaoCadastrar } from '../../styles/Button/botaoCadastrar';
 import { api } from '../../services/api';
 import { useNavigate, Link } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -45,7 +44,8 @@ const Login = ({ user, setUser }) => {
             localStorage.clear()
             localStorage.setItem("@USERID",response.data.user.id )
             localStorage.setItem("@TOKEN",response.data.token)
-            setUser(data.user)
+            setUser(response.data.user)
+        
             navigate('/dashboard')
 
 
@@ -82,7 +82,7 @@ const Login = ({ user, setUser }) => {
 
             <StyledBotaoEntrar />
             <p className='pCadastro'>Ainda não possui cadastro?</p>
-            <StyledBotaoCadastrar><Link to ="/registro">Cadastre-se</Link></StyledBotaoCadastrar>
+            <Link to ="/registro"><button className='botaoCadastrarLogin'>Cadastre-se</button></Link>
 
         </Form>
 

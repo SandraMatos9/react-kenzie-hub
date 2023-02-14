@@ -6,8 +6,8 @@ import {Link} from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 
-const Dashboard = () => {
-
+const Dashboard = ({user}) => {
+console.log(user)
     function AdicionarTech(){
 
     }
@@ -17,12 +17,13 @@ const Dashboard = () => {
         <>
             <StyledHeader>
                 <img className="logoBurguer" src={logoHub} />
-                <StyledBotaoSair><Link to="/">Sair</Link></StyledBotaoSair>
+                <Link to="/"><StyledBotaoSair>Sair</StyledBotaoSair></Link>
+                {/* localStorage.clear() */}
             </StyledHeader>
             <StyledMain>
                 <div className='divInfoUsuario'>
-                    <p className='ptitulo'>Olá Samuel Leão</p>
-                    <p className='pSubtitulo'>Primeiro módulo introdução ao front end</p>
+                    <p className='ptitulo'>Olá {user.name}</p>
+                    <p className='pSubtitulo'>{user.course_module}</p>
 
                 </div>
                 <div className='divTecnologias'>

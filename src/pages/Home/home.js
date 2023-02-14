@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   display: flex;
-  justify-content: space-around;
   background-color: #000000;
   width: 100%;
   height: 73px;
   align-items: center;
+  justify-content: space-around;
 
   & img {
     width: 105px;
