@@ -1,8 +1,8 @@
 import logoHub from '../../assets/Logo.svg'
 import { StyledBotaoSair } from '../../styles/Button/botaoSair'
-import { StyledHeader } from './home'
+import { StyledHeader, StyleDivDashboard } from './home'
 import { StyledMain } from '../Home/home'
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 
@@ -11,13 +11,19 @@ const Dashboard = ({user}) => {
 
     }
 
+    const userLogout =() =>{
+        SpeechSynthesisUtterance(null)
+        localStorage.removeItem("@TOKEN")
+        Navigate("/")
+    }
+
 
     return (
-        <>
+        <StyleDivDashboard>
             <StyledHeader>
                 <img className="logoBurguer" src={logoHub} />
                 <Link to="/"><StyledBotaoSair>Sair</StyledBotaoSair></Link>
-                {/* localStorage.clear() */}
+                userLogout()
             </StyledHeader>
             <StyledMain>
                 <div className='divInfoUsuario'>
@@ -44,7 +50,7 @@ const Dashboard = ({user}) => {
 
 
 
-        </>
+        </StyleDivDashboard>
     )
 }
 export default Dashboard

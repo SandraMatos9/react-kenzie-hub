@@ -14,7 +14,11 @@ export const GlobalStyle = createGlobalStyle`
     --Grey-0:#F8F9FA;
 
 }
+body{
+    background: #000000;
 
+
+}
 main{
     background: #000000;
     padding-bottom: 10px;

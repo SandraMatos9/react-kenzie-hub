@@ -1,12 +1,22 @@
 import styled from "styled-components";
 
+export const StyleDivDashboard = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  flex-direction: column;
+  max-width: 775px;
+  width:100%
+`;
+
 export const StyledHeader = styled.header`
   display: flex;
   background-color: #000000;
   width: 100%;
   height: 73px;
   align-items: center;
-  justify-content: space-around;
+ 
 
   & img {
     width: 105px;
@@ -19,7 +29,7 @@ export const StyledHeader = styled.header`
 export const StyledMain = styled.main`
   background: #000000;
   width: 100%;
-  /* height: 100%; */
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,13 +118,28 @@ export const StyledMain = styled.main`
   }
 
   @media (min-width: 800px) {
+
+    .StyleDivDashboard{
+      width: 775px;
+    }
+
+    .StyledHeader{
+      width: 775px;
+      background-color: red;
+    }
+
     & .divInfoUsuario {
       flex-direction: row;
       align-items: center;
       text-align: center;
+      width: 775px;
+
+
     }
     & .divTecnologias {
       width: 100%;
+      width: 775px;
+
     }
 
     & .ulCursos {
