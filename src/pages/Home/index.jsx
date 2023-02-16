@@ -22,7 +22,7 @@ const Dashboard = ({user}) => {
         <StyleDivDashboard>
             <StyledHeader>
                 <img className="logoBurguer" src={logoHub} />
-                <Link to="/"><StyledBotaoSair>Sair</StyledBotaoSair></Link>
+                <Link to="/"><StyledBotaoSair type='submit'>Sair</StyledBotaoSair></Link>
                 userLogout()
             </StyledHeader>
             <StyledMain>
