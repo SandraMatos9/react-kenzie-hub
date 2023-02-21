@@ -14,7 +14,7 @@ import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../Contexts/UserContext';
 
 
-const schema = yup.object({
+const schema = yup.object().shape({
     name: yup.string().required('Nome é obrigatório!'),
     email: yup.string().required('Email é obrigatório!'),
     password: yup.string().matches(/(\d)/, 'Deve conter ao menos um número.')
@@ -42,7 +42,7 @@ const Registro = () => {
         });
 
     const navigate = useNavigate()
-    
+
     const cadastroUsuario = async (data) => {
         delete data.confirmPassword
        await userRegister(data)

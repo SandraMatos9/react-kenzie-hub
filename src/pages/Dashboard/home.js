@@ -16,16 +16,29 @@ export const StyledHeader = styled.header`
   width: 100%;
   height: 73px;
   align-items: center;
+  justify-content: space-between;
+  justify-content: center;
+  margin: auto;
+
+  & .divImgEBotao{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
  
 
   & img {
     width: 105px;
     height: 14px;
+   
+  
   }
   & button {
     color: white;
   }
 `;
+
+
 export const StyledMain = styled.main`
   background: #000000;
   width: 100%;
@@ -34,6 +47,30 @@ export const StyledMain = styled.main`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+
+
+  & .pRender{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14.21px;
+    line-height: 22px;
+    color: #FFFFFF;
+
+  }
+
+  &.selectRender{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.182px;
+    line-height: 22px;
+    text-align: right;
+    color: #868E96;
+
+  }
+
 
   & .divInfoUsuario {
     display: flex;
@@ -100,7 +137,6 @@ export const StyledMain = styled.main`
     padding: 22px 19px;
     gap: 16px;
     width: 296px;
-    height: 416.37px;
     background: #212529;
     border-radius: 4px;
   }

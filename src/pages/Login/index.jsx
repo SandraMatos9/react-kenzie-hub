@@ -26,22 +26,17 @@ const Login = () => {
             .required('Senha é obrigatória!'),
 
     }).required();
-
-
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
     const navigate = useNavigate()
 
-    const onSubmit = (data) => {
-
-        userLogin(data)
-    }
+    
 
     return (
         <StyledMain>
             <img className="logoBurguer" src={logoHub} />
-            <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form onSubmit={handleSubmit(userLogin)}>
                 <p className='pLogin'>Login</p>
 
                 <label htmlFor='email'>Email</label>

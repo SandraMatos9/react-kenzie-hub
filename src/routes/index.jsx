@@ -1,17 +1,26 @@
 import React from 'react'
-import { Routes, Route ,Link} from 'react-router-dom'
+import { Routes, Route, Link, BrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from '../pages/Login'
-import Dashboard from '../pages/Home'
+import Dashboard from '../pages/Dashboard'
 import Registro from '../pages/Registro'
+import TechProvider from '../Contexts/TechContext'
+
+// import ProtectedRoutes from '../pages/ProtectedRoutes'
 
 
 const AppRoutes = () => {
     return (
         <Routes>
             <Route path='/' element={<Login />} />
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/registro' element={<Registro/>} />
-            {/* <Route path='*' element={<h1>Página não encontrada</h1>} /> */}
+            {/* <Route path='/dashboard' element={<ProtectedRoutes/>} /> */}
+
+            <Route path='/dashboard' element={
+                <TechProvider>
+                    <Dashboard />
+                </TechProvider>
+            } />
+
+            <Route path='/registro' element={<Registro />} />
         </Routes>
     )
 }
