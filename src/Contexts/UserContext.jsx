@@ -21,7 +21,7 @@ function UserProvider({ children }) {
 
                     const response = await api.get('/profile')
                     setUser(response.data);
-                    setInfoUserContext(response.data.user.techs)
+                    setInfoUserContext(response.data.techs)
                     navigate('/dashboard')
                 } catch (error) {
                     console.log(error)
@@ -49,8 +49,8 @@ function UserProvider({ children }) {
             api.defaults.headers.common['Authorization']=`Bearer ${ response.data.token}`
 
 
-            setUser(response.data.user.techs)
-            setInfoUserContext(response.data.user)
+            setUser(response.data.user)
+            setInfoUserContext(response.data.user.techs)
             navigate('/dashboard')
 
 
