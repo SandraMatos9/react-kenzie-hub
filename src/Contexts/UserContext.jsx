@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { api, token } from '../services/api'
+import { api} from '../services/api'
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom'
 
@@ -11,30 +11,32 @@ export const UserContext = createContext({});
 
 function UserProvider({ children }) {
     const [loading, setLoading] = useState(true)
-    const [user, setUser] = useState()
-    const [profile, setProfile] = useState({})
+    const [user, setUser] = useState(null)
     const navigate = useNavigate()
+    const [techsContext,setTechsContext] = useState([])
+
 
     useEffect(() => {
-        const userAutoLogin = async () => {
-            try {
-                const response = await api.get('/profile', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
+        const token = localStorage.getItem("@TOKEN")
+        if(token){
+            const userAutoLogin = async () => {
+                try {
+                    api.defaults.headers.common['Authorization']=`Bearer ${token}`
 
-                })
-                setProfile(response.data);
-                navigate('/dashboard')
-            } catch (error) {
-                console.log(error)
-                localStorage.clear("@TOKEN")
+                    const response = await api.get('/profile')
+                    setUser(response.data);
+                    setTechsContext(response.data.techs)
+                    navigate('/dashboard')
+                } catch (error) {
+                    console.log(error)
+                    localStorage.clear("@TOKEN")
+                }
+    
+               
             }
-
-           
+             userAutoLogin()
         }
-         userAutoLogin()
-    }, [token])
+    }, [])
 
 
     const userLogin = async (data) => {
@@ -48,7 +50,12 @@ function UserProvider({ children }) {
             console.log(response.data)
             localStorage.setItem("@USERID", response.data.user.id)
             localStorage.setItem("@TOKEN", response.data.token)
+            api.defaults.headers.common['Authorization']=`Bearer ${ response.data.token}`
+
+
+
             setUser(response.data.user)
+            setTechsContext(response.data.user.techsContext)
             navigate('/dashboard')
 
 
@@ -89,7 +96,7 @@ function UserProvider({ children }) {
 
 
     return (
-        <UserContext.Provider value={{ userLogin, userRegister, userLogout, user, profile, setProfile }}>
+        <UserContext.Provider value={{ userLogin, userRegister, userLogout, user,setTechsContext,techsContext}}>
             {children}
         </UserContext.Provider>
     )

@@ -18,13 +18,14 @@ const AddModal = () => {
 
     // const { register, handleSubmit } = useForm()
    
-    const {createTech,setTechInfo, handleCloseModal} = useContext(TechContext)    
+    const {createTech,setTechInfo, handleCloseModalCreate} = useContext(TechContext)    
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
 
     const submit= async(formData) =>{
+        console.log(formData)
         await createTech(formData)
 
 
@@ -36,7 +37,7 @@ const AddModal = () => {
             <StyledModal>
                 <div className='divTituloBotao'>
                     <p>Cadastrar Tecnologia</p>
-                    <button  onClick={handleCloseModal}>X</button>
+                    <button  onClick={handleCloseModalCreate}>X</button>
                 </div>
               
                 <form onSubmit={handleSubmit(submit)}>

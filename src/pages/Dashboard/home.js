@@ -42,7 +42,6 @@ export const StyledHeader = styled.header`
 export const StyledMain = styled.main`
   background: #000000;
   width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,6 +109,7 @@ export const StyledMain = styled.main`
     align-items: center;
     height: 72px;
     text-align: center;
+    margin: 10px;
 
     & .pTituloTech {
       font-family: "Inter";
@@ -139,18 +139,28 @@ export const StyledMain = styled.main`
     width: 296px;
     background: #212529;
     border-radius: 4px;
+    height: 100vh;
   }
   & .liCursos {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 12.182px;
-    gap: 12.18px;
+    padding: 12px;
+    gap: 12px;
     width: 279px;
-    height: 48.73px;
+    height: 48px;
     background: #121214;
-    border-radius: 4.06066px;
+    border-radius: 4px;
+
+    &.liCursos:hover{
+      background-color: #343B41;
+    }
+
+    & .btnTrash{
+      width: 20px;
+      height: 20px;
+    }
   }
 
   @media (min-width: 800px) {
@@ -188,6 +198,15 @@ export const StyledMain = styled.main`
       background: #121214;
       border-radius: 4px;
       margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+
+
+      & .divOptionBtn{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
     }
   }
 `;

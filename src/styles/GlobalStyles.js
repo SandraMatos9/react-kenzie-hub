@@ -24,6 +24,12 @@ main{
     padding-bottom: 10px;
     padding-top: 10px;
     justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 800px){
+    flex-direction: none;
 }
 input{
     color: var(--Grey-0);

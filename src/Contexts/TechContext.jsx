@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from '../services/api'
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom'
+import { UserContext } from "./UserContext";
 
 
 
@@ -11,21 +12,33 @@ export const TechContext = createContext({})
 const TechProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(false)
-    const [techInfo, setTechInfo] = useState([])
-    console.log(techInfo)
+    const { techsContext, setTechsContext} = useContext(UserContext)
+    const [updateTechs,setUpdateTechs] = useState(null)
 
 
 
 
+    const [modalIsOpenEdit, setIsOpenEdit] = useState(false)
 
-    const [modalIsOpen, setIsOpen] = useState(false)
-
-    function handleOpenModal() {
-        setIsOpen(true)
+    function handleOpenModalEdit() {
+        setIsOpenEdit(true)
     }
 
-    function handleCloseModal() {
-        setIsOpen(false)
+    function handleCloseModalEdit() {
+        setIsOpenEdit(false)
+
+    }
+
+
+
+    const [modalIsOpenCreate, setIsOpenCreate] = useState(false)
+
+    function handleOpenModalCreate() {
+        setIsOpenCreate(true)
+    }
+
+    function handleCloseModalCreate() {
+        setIsOpenCreate(false)
 
     }
 
@@ -33,18 +46,14 @@ const TechProvider = ({ children }) => {
 
         console.log(data)
         try {
-            // const response = await api.post('/users/techs')
-
+            const response = await api.post('/users/techs', data)
             toast.success("Tecnologia adicionada com sucesso!")
-            setTechInfo([...techInfo, {
-                // id,
-                title: data.title,
-                status: data.status
-            }])
-
+            setTechsContext([...techsContext,
+            response.data
+            ])
+            console.log(response.data)
         } catch (error) {
-            console.log
-
+            console.log(error)
             toast.error("O usuário já possui esta tecnologia criada, basta atualizá-la")
         }
     }
@@ -52,18 +61,19 @@ const TechProvider = ({ children }) => {
 
     const updateTech = async (data, dataId) => {
         try {
-            const response = await api.put('users/techs/:tech_id ', {
+            const token = localStorage.getItem("@TOKEN")
+            const response = await api.put(`users/techs/${dataId} `, data, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
-            const id = response.data.id
+ 
+            // setTechsContext(response.data.techs)
+
+            console.log(response)
 
             toast.success("Tecnologia atualizada com sucesso!")
-            localStorage.clear()
-            setLoading(response.data.user)
-
-            const newInfo = techs.map(tech => {
+            const newTechsUpdate = techsContext.map(tech => {
                 if (dataId === tech.id) {
                     return { ...tech, ...data }
 
@@ -71,8 +81,8 @@ const TechProvider = ({ children }) => {
                     return tech
 
                 }
-                setTechInfo(newInfo)
             })
+            setTechsContext(newTechsUpdate)
 
         } catch (error) {
 
@@ -83,27 +93,40 @@ const TechProvider = ({ children }) => {
 
 
     const deleteTech = async (dataId) => {
+        console.log(dataId)
         try {
-            const response = await api.delete(`//users/techs/:${dataId}`, {
+            const token = localStorage.getItem("@TOKEN")
+            // setLoading(true)
+            const response = await api.delete(`users/techs/${dataId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
             toast.success("Tecnologia deletada com sucesso!")
-            const newLoading = loading.filter(loading => loadConfigFromFile.id !== dataId)
-            setLoading(newLoading)
+            const newTechs = techsContext.filter(tech => tech.id !== dataId)
+            setTechsContext(newTechs)
+            
 
 
         } catch (error) {
 
             toast.error("Erro ao deletar")
+            console.log(error)
+
+        }
+        finally {
+            setLoading(false)
+
         }
     }
 
     return (
         <>
 
-            <TechContext.Provider value={{ loading, setLoading, createTech, deleteTech, updateTech, techInfo, setTechInfo, handleOpenModal, handleCloseModal,modalIsOpen,setIsOpen }}>
+            <TechContext.Provider value={{
+                loading, setLoading, createTech, deleteTech, updateTech, handleOpenModalCreate,
+                handleCloseModalCreate, modalIsOpenCreate, setIsOpenCreate, handleOpenModalEdit,
+                handleCloseModalEdit, modalIsOpenEdit, setIsOpenEdit, updateTechs,setUpdateTechs}}>
                 {children}
             </TechContext.Provider>
         </>

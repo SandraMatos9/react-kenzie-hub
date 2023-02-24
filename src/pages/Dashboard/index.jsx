@@ -8,59 +8,71 @@ import { UserContext } from '../../Contexts/UserContext'
 import { useContext, useState } from 'react'
 import AddModal from '../../components/Modais/Modal/index'
 import { TechContext } from '../../Contexts/TechContext'
-
+import AddModalEditar from '../../components/Modais/ModalEditar'
 // criar contexto tecnologias, logica do modal vai paratecnologias
 
 const Dashboard = () => {
 
-    const { user } = useContext(UserContext)
-    const { techInfo,setTechInfo,handleOpenModal, modalIsOpen } = useContext(TechContext)
-    const { profile, setProfile } = useContext(UserContext)
+    const { handleOpenModalCreate, modalIsOpenCreate,
+        handleOpenModalEdit, handleCloseModalEdit, modalIsOpenEdit, setIsOpenEdit, setIsOpenCreate, updateTechs, setUpdateTechs } = useContext(TechContext)
+    const { user, techsContext, setTechsContext } = useContext(UserContext)
+    const [isDelete, setIsDelete] = useState(true)
 
-  
+    const [updateProp, setUpdateProp] = useState(null)
+
+
+    function handleUpdate(tech) {
+        setUpdateTechs(tech)
+        handleOpenModalEdit()
+
+    }
+
     const userLogout = () => {
         localStorage.removeItem("@TOKEN")
         Navigate("/")
 
     }
+
+    const deleteLi = (idRemove) => {
+        li.remove()
+        updateTechs.remove()
+    }
     return (
         <>
-            {modalIsOpen && <AddModal />}
+            {modalIsOpenCreate && <AddModal />}
 
             <StyleDivDashboard>
                 <StyledHeader>
                     <div className='divImgEBotao'>
-                    <img className="logoHub" src={logoHub} />
-                    <Link to="/"><StyledBotaoSair type='submit' onClick={userLogout} >Sair</StyledBotaoSair></Link>
+                        <img className="logoHub" src={logoHub} />
+                        <Link to="/"><StyledBotaoSair type='submit' onClick={userLogout} >Sair</StyledBotaoSair></Link>
                     </div>
-                    
-                   
+
+
                     userLogout()
                 </StyledHeader>
                 <StyledMain>
                     <div className='divInfoUsuario'>
-                        <p className='ptitulo'>Olá {profile.name}</p>
-                        <p className='pSubtitulo'>{profile.course_module}</p>
+                        <p className='ptitulo'>Olá {user?.name}</p>
+                        <p className='pSubtitulo'>{user?.course_module}</p>
 
                     </div>
                     <div className='divTecnologias'>
                         <p className='pTituloTech'>Tecnologias</p>
-                        <button className='btnAdicionarTec' onClick={handleOpenModal}>+</button>
+                        <button className='btnAdicionarTec' onClick={handleOpenModalCreate}>+</button>
                     </div>
                     <div className='divCursos'>
-                        {techInfo.length > 0 ? (
+                        {techsContext.length > 0 ? (
                             <ul className='ulCursos'>
-                                {techInfo.map((tech) => (
-                                    <li className='liCursos'>
-                                        {techInfo.id}
-                                        <p className='pRender'>{techInfo.title}</p>
-                                        <select className='selectRender'>{techInfo.status}
-                                            <option>Iniciante</option>
-                                            <option>Intermediário</option>
-                                            <option>Avançado</option>
-                                        </select>
+                                {modalIsOpenEdit && <AddModalEditar setUpdateProp={setUpdateProp} />}
+                                {techsContext.map((tech) => (
+                                    <li className='liCursos' key={tech.id} onClick={() => handleUpdate(tech)}>
+                                        <p className='pRender'>{tech.title}</p>
+                                        <div className='divOptionBtn'>
+                                            <option className='pRender' key={tech.id} value={tech.slug} >{tech.status}</option>
+                                        </div>
+                                        {/* setUpdateProp(tech) */}
                                     </li>
-
                                 ))}
 
                             </ul>
