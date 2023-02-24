@@ -12,12 +12,10 @@ import AddModalEditar from '../../components/Modais/ModalEditar'
 const Dashboard = () => {
 
     const { handleOpenModalCreate, modalIsOpenCreate,
-        handleOpenModalEdit, handleCloseModalEdit, modalIsOpenEdit, setIsOpenEdit, setIsOpenCreate, updateTechs, setUpdateTechs } = useContext(TechContext)
-    const { user, techsContext, setTechsContext } = useContext(UserContext)
-    const [isDelete, setIsDelete] = useState(true)
+        handleOpenModalEdit,  modalIsOpenEdit, updateTechs, setUpdateTechs } = useContext(TechContext)
+    const { user, infoUserContext} = useContext(UserContext)
 
     const [updateProp, setUpdateProp] = useState(null)
-
 
     function handleUpdate(tech) {
         setUpdateTechs(tech)
@@ -60,10 +58,10 @@ const Dashboard = () => {
                         <button className='btnAdicionarTec' onClick={handleOpenModalCreate}>+</button>
                     </div>
                     <div className='divCursos'>
-                        {techsContext.length > 0 ? (
+                        {infoUserContext.length > 0 ? (
                             <ul className='ulCursos'>
-                                {modalIsOpenEdit && <AddModalEditar setUpdateProp={setUpdateProp} />}
-                                {techsContext.map((tech) => (
+                                {modalIsOpenEdit && <AddModalEditar />}
+                                {infoUserContext.map((tech) => (
                                     <li className='liCursos' key={tech.id} onClick={() => handleUpdate(tech)}>
                                         <p className='pRender'>{tech.title}</p>
                                         <div className='divOptionBtn'>

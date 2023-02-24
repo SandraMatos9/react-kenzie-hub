@@ -12,7 +12,7 @@ export const TechContext = createContext({})
 const TechProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(false)
-    const { techsContext, setTechsContext} = useContext(UserContext)
+    const { infoUserContext, setInfoUserContext} = useContext(UserContext)
     const [updateTechs,setUpdateTechs] = useState(null)
 
 
@@ -48,7 +48,7 @@ const TechProvider = ({ children }) => {
         try {
             const response = await api.post('/users/techs', data)
             toast.success("Tecnologia adicionada com sucesso!")
-            setTechsContext([...techsContext,
+            setInfoUserContext([...infoUserContext,
             response.data
             ])
             console.log(response.data)
@@ -73,7 +73,7 @@ const TechProvider = ({ children }) => {
             console.log(response)
 
             toast.success("Tecnologia atualizada com sucesso!")
-            const newTechsUpdate = techsContext.map(tech => {
+            const newTechsUpdate = infoUserContext.map(tech => {
                 if (dataId === tech.id) {
                     return { ...tech, ...data }
 
@@ -82,7 +82,7 @@ const TechProvider = ({ children }) => {
 
                 }
             })
-            setTechsContext(newTechsUpdate)
+            setInfoUserContext(newTechsUpdate)
 
         } catch (error) {
 
@@ -103,8 +103,8 @@ const TechProvider = ({ children }) => {
                 }
             })
             toast.success("Tecnologia deletada com sucesso!")
-            const newTechs = techsContext.filter(tech => tech.id !== dataId)
-            setTechsContext(newTechs)
+            const newTechs = infoUserContext.filter(tech => tech.id !== dataId)
+            setInfoUserContext(newTechs)
 
 
         } catch (error) {

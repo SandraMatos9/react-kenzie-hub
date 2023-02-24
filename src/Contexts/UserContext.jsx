@@ -1,19 +1,15 @@
 import { createContext, useEffect, useState } from "react";
 import { api} from '../services/api'
-import { toast, ToastContainer } from 'react-toastify';
-import { useNavigate, Link } from 'react-router-dom'
-
-
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
 
 
 export const UserContext = createContext({});
 
-
 function UserProvider({ children }) {
-    const [loading, setLoading] = useState(true)
     const [user, setUser] = useState(null)
     const navigate = useNavigate()
-    const [techsContext,setTechsContext] = useState([])
+    const [infoUserContext,setInfoUserContext] = useState([])
 
 
     useEffect(() => {
@@ -25,7 +21,7 @@ function UserProvider({ children }) {
 
                     const response = await api.get('/profile')
                     setUser(response.data);
-                    setTechsContext(response.data.techs)
+                    setInfoUserContext(response.data.user.techs)
                     navigate('/dashboard')
                 } catch (error) {
                     console.log(error)
@@ -42,7 +38,7 @@ function UserProvider({ children }) {
     const userLogin = async (data) => {
         // console.log(data)
         try {
-            const response = await api.post('/sessions/ ', data)
+            const response = await api.post('/sessions/', data)
             const id = response.data.id
 
             toast.success("Login feito com sucesso!")
@@ -53,9 +49,8 @@ function UserProvider({ children }) {
             api.defaults.headers.common['Authorization']=`Bearer ${ response.data.token}`
 
 
-
-            setUser(response.data.user)
-            setTechsContext(response.data.user.techsContext)
+            setUser(response.data.user.techs)
+            setInfoUserContext(response.data.user)
             navigate('/dashboard')
 
 
@@ -71,8 +66,6 @@ function UserProvider({ children }) {
         navigate("/")
     }
 
-
-
     const userRegister = async (data) => {
 
         try {
@@ -84,23 +77,17 @@ function UserProvider({ children }) {
             toast.success("Cadastro feito com sucesso!")
 
 
-
-
         } catch (error) {
             toast.error("Erro ao cadastrar")
         }
     }
 
 
-
-
-
     return (
-        <UserContext.Provider value={{ userLogin, userRegister, userLogout, user,setTechsContext,techsContext}}>
+        <UserContext.Provider value={{ userLogin, userRegister, userLogout, user,setInfoUserContext,infoUserContext}}>
             {children}
         </UserContext.Provider>
     )
-
 
 }
 
