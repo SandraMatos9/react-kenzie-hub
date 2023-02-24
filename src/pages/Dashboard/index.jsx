@@ -3,13 +3,11 @@ import { StyledBotaoSair } from '../../styles/Button/botaoSair'
 import { StyledHeader, StyleDivDashboard } from './home'
 import { StyledMain } from './home'
 import { Link, Navigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
 import { UserContext } from '../../Contexts/UserContext'
 import { useContext, useState } from 'react'
 import AddModal from '../../components/Modais/Modal/index'
 import { TechContext } from '../../Contexts/TechContext'
 import AddModalEditar from '../../components/Modais/ModalEditar'
-// criar contexto tecnologias, logica do modal vai paratecnologias
 
 const Dashboard = () => {
 
@@ -49,7 +47,7 @@ const Dashboard = () => {
                     </div>
 
 
-                    userLogout()
+                   
                 </StyledHeader>
                 <StyledMain>
                     <div className='divInfoUsuario'>

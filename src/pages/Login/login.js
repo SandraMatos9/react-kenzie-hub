@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const StyledMain = styled.main`
   background: #000000;
   width: 100%;

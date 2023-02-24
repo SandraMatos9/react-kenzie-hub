@@ -30,6 +30,17 @@ const AddModalEditar = () => {
         await updateTech(formData,updateTechs.id)
     }
 
+    function salvarFecharModal(e){
+        this.handleCloseModalEdit(e)
+
+
+    }
+
+    function deletarFecharModal(e){
+        this.handleCloseModalEdit(e)
+
+        
+    }
    
   
     
@@ -55,8 +66,8 @@ const AddModalEditar = () => {
                     </select>
                     <div className='divBtns'>
 
-                        <button type ='submit' className='btnSalvarAlteracoes' onClick={() => techsContext}>Salvar alterações</button>
-                        <button type ='button' className='btnExcluir' onClick={() => deleteTech(updateTechs.id)}>Excluir</button>
+                        <button type ='submit' className='btnSalvarAlteracoes' onClick={(handleCloseModalEdit) => techsContext}>Salvar alterações</button>
+                        <button type ='button' className='btnExcluir' onClick={(handleCloseModalEdit) => deleteTech(updateTechs.id)}>Excluir</button>
 
 
                     </div>

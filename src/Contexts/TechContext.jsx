@@ -105,7 +105,6 @@ const TechProvider = ({ children }) => {
             toast.success("Tecnologia deletada com sucesso!")
             const newTechs = techsContext.filter(tech => tech.id !== dataId)
             setTechsContext(newTechs)
-            
 
 
         } catch (error) {

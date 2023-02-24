@@ -2,10 +2,8 @@ import { useForm } from 'react-hook-form'
 import logoHub from '../../assets/Logo.svg'
 import StyledBotaoEntrar from '../../components/BotaoEntrar';
 import { Form, StyledMain } from './login'
-import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import { useContext, useEffect, useState } from 'react'
-import { api } from '../../services/api';
+import { useContext } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
