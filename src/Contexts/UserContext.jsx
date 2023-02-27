@@ -57,6 +57,7 @@ function UserProvider({ children }) {
         } catch (error) {
 
             toast.error("Erro ao logar")
+            console.log(error)
         }
     }
 

@@ -4,8 +4,7 @@ import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
 import Registro from '../pages/Registro'
 import TechProvider from '../Contexts/TechContext'
-
-// import ProtectedRoutes from '../pages/ProtectedRoutes'
+import ProtectedRoutes from '../pages/ProtectedRoutes'
 
 
 const AppRoutes = () => {
@@ -13,12 +12,13 @@ const AppRoutes = () => {
         <Routes>
             <Route path='/' element={<Login />} />
             {/* <Route path='/dashboard' element={<ProtectedRoutes/>} /> */}
-
+        <Route  element={<ProtectedRoutes/>}  >
             <Route path='/dashboard' element={
                 <TechProvider>
                     <Dashboard />
                 </TechProvider>
             } />
+        </Route>
 
             <Route path='/registro' element={<Registro />} />
         </Routes>

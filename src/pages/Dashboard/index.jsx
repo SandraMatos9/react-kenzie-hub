@@ -2,7 +2,7 @@ import logoHub from '../../assets/Logo.svg'
 import { StyledBotaoSair } from '../../styles/Button/botaoSair'
 import { StyledHeader, StyleDivDashboard } from './home'
 import { StyledMain } from './home'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../Contexts/UserContext'
 import { useContext, useState } from 'react'
 import AddModal from '../../components/Modais/Modal/index'
@@ -16,6 +16,8 @@ const Dashboard = () => {
     const { user, infoUserContext} = useContext(UserContext)
 
     const [updateProp, setUpdateProp] = useState(null)
+    const navigate = useNavigate()
+
 
     function handleUpdate(tech) {
         setUpdateTechs(tech)
@@ -25,7 +27,9 @@ const Dashboard = () => {
 
     const userLogout = () => {
         localStorage.removeItem("@TOKEN")
-        Navigate("/")
+        localStorage.removeItem("@USERID")
+
+        navigate("/")
 
     }
 
